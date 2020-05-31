@@ -6,7 +6,7 @@ const User = use('App/Models/User')
 class UserController {
   async show({ params, response }) {
     try {
-      const user = await User.find({ _id: params.id })
+      const user = await User.find({ _id: params.id }).lean()
       return response.status(200).json(user)
     } catch (error) {
       throw response.status(400).json({ error: error })
@@ -17,7 +17,7 @@ class UserController {
     try {
       const { username } = request.body
 
-      const userExists = await User.findOne({ username: username })
+      const userExists = await User.findOne({ username: username }).lean()
 
       if (userExists) {
         return response.status(409).json({ error: 'This username already exists.' })
