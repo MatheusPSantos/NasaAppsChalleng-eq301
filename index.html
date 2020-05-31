@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHAT</title>
+  <style>
+    form>* {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="/" id="form">
+    <label for="from">De</label>
+    <input type="text" id="from" name="from">
+    <label for="to">Para</label>
+    <input type="text" id="to" name="to">
+    <label for="text">Mensagem</label>
+    <textarea name="text" id="message" id="" cols="30" rows="10"></textarea>
+    <button id="submit">Send</button>
+  </form>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+  <script src="https://unpkg.com/@adonisjs/websocket-client"></script>
+  <script>
+    const ws = adonis.Ws('ws://localhost:3333').connect()
+    console.log(ws)
+
+    let isConnected = false
+
+    var chat = {}
+
+    ws.on('open', () => {
+      console.log('connected')
+
+      idConnected = true
+    })
+
+    ws.on('close', () => {
+      isConnected = false
+    })
+  </script>
+</body>
+
+</html>

@@ -3,35 +3,36 @@
 const BaseModel = use('MongooseModel')
 
 /**
- * @class User
+ * @class Room
  */
-class User extends BaseModel {
+class Room extends BaseModel {
   static boot({ schema }) {
     // Hooks:
     // this.addHook('preSave', () => {})
-    // this.addHook('preSave', 'UserHook.method')
+    // this.addHook('preSave', 'RoomHook.method')
     // Indexes:
     // this.index({}, {background: true})
   }
+  /**
+   * Room's schema
+   *
+   */
 
   static get schemaOptions() {
-    return { collection: "_User" };
+    return { collection: "_Room" };
   }
 
   static get primaryKey() {
     return "_id";
   }
-  /**
-   * User's schema
-   */
+
   static get schema() {
     return {
       _id: String,
-      username: String,
-      token_access: String,
-      img: String
+      users: Array,
+      messages: Array
     }
   }
 }
 
-module.exports = User.buildModel('User')
+module.exports = Room.buildModel('Room')

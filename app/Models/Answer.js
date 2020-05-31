@@ -19,6 +19,11 @@ class Answer extends BaseModel {
   /**
    * Answer's schema
    */
+
+  static get primaryKey() {
+    return "_id";
+  }
+
   static get schema() {
     return {
       _id: String,
