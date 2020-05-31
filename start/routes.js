@@ -30,3 +30,8 @@ Route.get('/answers', 'AnswerController.index')
 Route.get('/answers/:username', 'AnswerController.show')
 Route.post('/answers', 'AnswerController.store')
 Route.delete('/answers', 'AnswerController.delete')
+
+// Chat
+Route.get('/chat/:id', 'ChatController.show')
+Route.post('/chat', 'ChatController.create')
+Route.post('/chat/:id', 'ChatController.createMessage')
