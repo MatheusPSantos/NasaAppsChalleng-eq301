@@ -13,12 +13,19 @@ class User extends BaseModel {
     // Indexes:
     // this.index({}, {background: true})
   }
+
+  static get schemaOptions() {
+    return { collection: "_User" };
+  }
   /**
    * User's schema
    */
   static get schema() {
     return {
-      username: 'String'
+      _id: String,
+      username: String,
+      token_access: String,
+      img: String
     }
   }
 }

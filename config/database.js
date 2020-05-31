@@ -14,8 +14,7 @@ module.exports = {
 |
 | Here we define connection settings for MongoDB database.
 |
-*/
-  mongodb: {
+*/  mongodb: {
     connectionString: Env.get('MONGO_CONNECTION_STRING', null),
     connection: {
       host: Env.get('MONGO_HOST', 'localhost'),
@@ -23,8 +22,9 @@ module.exports = {
       user: Env.get('MONGO_USER', 'admin'),
       pass: Env.get('MONGO_PASSWORD', ''),
       database: Env.get('MONGO_DATABASE', 'adonis'),
-      options: {
-        // All options can be found at http://mongoosejs.com/docs/connections.html
+      options: {        // All options can be found at http://mongoosejs.com/docs/connections.html
+        useNewUrlParser: true,
+        useUnifiedTopology: true
       },
       debug: false
     }
