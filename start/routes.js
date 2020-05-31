@@ -16,7 +16,16 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
+// Routes for User
 Route.post('/users', 'UserController.store')
 Route.get('/users/:id', 'UserController.show')
+Route.get('/users', 'UserController.index')
 
+// Routes for Session
 Route.post('/sessions', 'SessionController.store')
+
+// Answers routes
+Route.get('/answers', 'AnswerController.index')
+Route.get('/answers/:username', 'AnswerController.show')
+Route.post('/answers', 'AnswerController.store')
+Route.delete('/answers', 'AnswerController.delete')
