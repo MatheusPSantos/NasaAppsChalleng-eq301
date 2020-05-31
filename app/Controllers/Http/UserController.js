@@ -6,7 +6,8 @@ const User = use('App/Models/User')
 class UserController {
   async show({ params, response }) {
     try {
-      return await User.find({ _id: params.id })
+      const user = await User.find({ _id: params.id })
+      return response.status(200).json(user)
     } catch (error) {
       throw response.status(400).json({ error: error })
     }
@@ -15,12 +16,20 @@ class UserController {
   async store({ request, response }) {
     try {
       const { username } = request.body
-      return await User.create({
+
+      const userExists = await User.findOne({ username: username })
+
+      if (userExists) {
+        return response.status(409).json({ error: 'This username already exists.' })
+      }
+
+      const user = await User.create({
         username: username,
         token_access: null,
         _id: mongoose.Types.ObjectId(),
         img: null
       })
+      return response.status(200).send(user)
     } catch (error) {
       throw response.status(400).json({ error: error })
     }
