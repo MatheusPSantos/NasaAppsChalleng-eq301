@@ -20,6 +20,7 @@ const Route = use('Route')
 Route.post('/users', 'UserController.store')
 Route.get('/users/:id', 'UserController.show')
 Route.get('/users', 'UserController.index')
+Route.delete('/users', 'UserController.delete')
 
 // Routes for Session
 Route.post('/sessions', 'SessionController.store')
