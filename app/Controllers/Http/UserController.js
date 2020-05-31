@@ -34,6 +34,15 @@ class UserController {
       throw response.status(400).json({ error: error })
     }
   }
+
+  async index({ response }) {
+    try {
+      const users = await User.find({}).lean()
+      return response.status(200).json(users)
+    } catch (error) {
+      throw response.status(400).json({ error: error })
+    }
+  }
 }
 
 module.exports = UserController
