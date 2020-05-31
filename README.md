@@ -1,4 +1,4 @@
-# Adonis API application
+# Nasa Apps Challeng 2020 Brazil
 
 This is the boilerplate for creating an API server in AdonisJs, it comes pre-configured with.
 
